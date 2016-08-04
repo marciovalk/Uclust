@@ -18,7 +18,7 @@
 Uteste_class= function(ngv,numB,md)
 {   ng1 = ngv[1]
     ng2 = ngv[2]
-  if (dim(md)[1]!=(ng1+ng2)){
+  if (dim(md)[1]!=(ng1+ng2+1)){
     print("md must be (n+1 x n+1) matrix. 
            If n1 is the size of group 1, n2 is the size of group 2
            and X is the element to be classified, md must be calculated
@@ -30,6 +30,7 @@ Uteste_class= function(ngv,numB,md)
   B1_0=Bn(c(ng1+1,ng2),md)
   B2_0=Bn(c(ng1,1+ng2),md)
   D = B1_0-B2_0
+      
   for(i in 1:numB)
   {
     vaux1 = floor(runif(ng1,1,ng1+1))
@@ -44,3 +45,23 @@ Uteste_class= function(ngv,numB,md)
   }
   mean(B>D)
 }
+
+##Example 1 
+   # x=matrix(c(rnorm(300,0),rnorm(360,10)),nrow=60) 
+## x is a 60x11 matrix
+## 5 columns with mean zero and 6 with mean 10 
+ 
+  # md=as.matrix(dist(t(x)))
+  # ngv=c(5,5) # H0: column 6 is not significantly classified in G1 (columns 1,2,3,4,5) (TRUE p-value must be >0.05)
+  # Uteste_class(ngv,1000,md)
+
+
+
+##Example 2 
+  # x=matrix(c(rnorm(360,0),rnorm(300,10)),nrow=60) 
+## x is a 60x11 matrix
+## 6 columns with mean zero and 5 with mean 10 
+
+  # md=as.matrix(dist(t(x)))
+  # ngv=c(5,5) # H0: column 6 is not significantly classified in G1(columns 1,2,3,4,5) (FALSE p-value must be >0.05)
+  # Uteste_class(ngv,1000,md)
