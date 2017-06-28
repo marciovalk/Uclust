@@ -60,5 +60,24 @@ utest_classify <- function(x, data, groups, bootstrap_iter = 1000)
         B[i] <- B1 - B2
     }
     
-    mean(B > D)
+    utest_classify_obj <- list(p_value = mean(B > D),
+                            groups = groups,
+                            bootstrap_iter = bootstrap_iter)
+    
+    class(utest_classify_obj) <- "utest_classify"
+    
+    return(utest_classify_obj)
+}
+
+#' Simple print method for utest_classify objects.
+#' @export
+print.utest_classify <- function(obj, ...) {
+    cat("\n")
+    cat("U test for classification\n\n")
+    cat("p-value:", obj$p_value, "\n")
+    cat("Groups:", obj$groups, "\n")
+    cat("Bootstrap iterations:", obj$bootstrap_iter, "\n")
+    cat("\n")
+    
+    invisible(obj)
 }
