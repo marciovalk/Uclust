@@ -4,13 +4,13 @@
 \alias{Bn}
 \title{The test statistic \code{Bn}.}
 \usage{
-Bn(ngv, md)
+Bn(ngv, distances)
 }
 \arguments{
-\item{ngv}{A numeric vector \code{c(n1, n2)} where \code{n1} is the number of elements in group 1 and
-\code{n2} is the number of elements in group 2.}
+\item{ngv}{A numeric vector \code{c(n1, n2)} where \code{n1} is the number of
+elements in group 1 and \code{n2} is the number of elements in group 2.}
 
-\item{md}{A n x n matrix of distances where \eqn{n = n1 + n2}.}
+\item{distances}{A n x n matrix of distances where \eqn{n = n1 + n2}.}
 }
 \value{
 A value for the statistic \code{Bn}.
